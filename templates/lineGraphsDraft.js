@@ -4,16 +4,16 @@ function init_line() {
         x:[1,2,3,4,5],
         y:[2,4,8,16,32]
     }];
-    Plotly.newPlot("plot", data);
+    Plotly.newPlot("lineplot", data);
 }
 
 // Call updateLineGraph() when _____ is done
-d3.selectALL(________).on("change", updateLineGraph());
+d3.selectAll("#toggleOptions").on("change", updateLineGraph);
 
 // Function to change plot with event is triggered
 function updateLineGraph() {
     // Select the dropdown menu
-    let toggle = d3.select(______)
+    let toggle = d3.select("#toggleOptions")
     
     // Assign the value of the event to a variable
     let toggleChoice = toggle.property("value")
@@ -34,9 +34,9 @@ function updateLineGraph() {
     }
 
     // Update the plot
-    Plotly.restyle("plot", "x", [x]);
-    Plotly.restyle("plot", "y", [y]);
+    Plotly.restyle("lineplot", "x", [x]);
+    Plotly.restyle("lineplot", "y", [y]);
 
 }
 
-init_line()
+init_line();
