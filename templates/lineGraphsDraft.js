@@ -4,7 +4,14 @@ function init_line() {
         x:[1,2,3,4,5],
         y:[2,4,8,16,32]
     }];
-    Plotly.newPlot("lineplot", data);
+
+    // Define Layout
+    var layout = {
+        title: "Zestimate Over Time",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Zestimate in $"}
+    };
+    Plotly.newPlot("lineplot", data, layout);
 }
 
 // Call updateLineGraph() when _____ is done
