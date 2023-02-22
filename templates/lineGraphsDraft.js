@@ -4,7 +4,14 @@ function init_line() {
         x:[1,2,3,4,5],
         y:[2,4,8,16,32]
     }];
-    Plotly.newPlot("lineplot", data);
+
+    // Define Layout
+    var layout = {
+        title: "Zestimates of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Zestimate in $"}
+    };
+    Plotly.newPlot("lineplot", data, layout);
 }
 
 // Call updateLineGraph() when _____ is done
@@ -26,17 +33,29 @@ function updateLineGraph() {
     if (toggleChoice === "zestimates") {
         x = [1,2,3,4,5];
         y = [2,4,8,16,32];
+
+        var update = {
+            title: "Zestimates of Well Known Zipcodes",
+            xaxis: {title: "Date"},
+            yaxis: {title: "Zestimate in $"}
+        };
     }
 
     else if (toggleChoice === "percentage") {
         x = [1,2,3,4,5];
         y = [3,9,27,81,243];
+
+        var update = {
+            title: "Percent Change in Zestimate of Well Known Zipcodes",
+            xaxis: {title: "Date"},
+            yaxis: {title: "Percent Change"}
+        };
     }
 
     // Update the plot
     Plotly.restyle("lineplot", "x", [x]);
     Plotly.restyle("lineplot", "y", [y]);
-
+    Plotly.relayout("lineplot", update)
 }
 
 init_line();
