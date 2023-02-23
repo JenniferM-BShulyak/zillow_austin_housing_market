@@ -33,24 +33,64 @@ def page_name():
 if __name__ == "__main__":
     app.run(debug=True)
 
-@app.route('/vis_map_data')
-def map_data():
+@app.route('/austin_metro_data')
+def austin_metro():
     session = Session(engine)
 
     austin_metro = session.query(Austin_metro)
     austin_metro_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_metro] 
     austin_metro_json = pd.DataFrame(austin_metro_data).to_json
 
+    session.close()
+
+   
+
+    return austin_metro_json
+
+@app.route('/austin_metro_percentages_data')
+def austin_metro_percentages():
+    session = Session(engine)
+
     austin_metro_percentages = session.query(Austin_metro_percentages)
-
-    austin_zestimates = session.query(Austin_zestimates)
-
-    austin_zestimates_percentages_first = session.query(Austin_zestimates_percentages)
-    
+    austin_metro_percentages_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_metro_percentages] 
+    austin_metro_percentages_json = pd.DataFrame(austin_metro_percentages_data).to_json
 
     session.close()
 
    
 
-    return 
+    return austin_metro_percentages_json
+    
+
+
+@app.route('/austin_zestimates_data')
+def austin_zestiamtes():
+    session = Session(engine)
+
+    austin_zestimates = session.query(Austin_zestimates)
+    austin_zestimates_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_zestimates] 
+    austin_zestimates_json = pd.DataFrame(austin_zestimates_data).to_json
+
+    session.close()
+
+   
+
+    return austin_zestimates_json
+
+@app.route('/austin_zestimates_percentages_data')
+def austin_zestiamtes_percentages():
+    session = Session(engine)
+
+    austin_zestimates_percentages = session.query(Austin_zestimates_percentages)
+    austin_zestimates_percentages_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_zestimates_percentages] 
+    austin_zestimates_percentages_data_json = pd.DataFrame(austin_zestimates_percentages_data).to_json
+
+    session.close()
+
+   
+
+    return austin_zestimates_percentages_data_json
+
+    
+
     
