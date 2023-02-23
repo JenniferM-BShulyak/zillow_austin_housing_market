@@ -31,8 +31,13 @@ function updateLineGraph() {
     let y = [];
 
     if (toggleChoice === "zestimates") {
-        x = [1,2,3,4,5];
-        y = [2,4,8,16,32];
+        fetch('/austin_zestimates_data').then(
+            (response) => (response.json())
+        ).then(
+            x = [1,2,3,4,5],
+            y = [2,4,8,16,32]
+        )
+        
 
         var update = {
             title: "Zestimates of Well Known Zipcodes",
