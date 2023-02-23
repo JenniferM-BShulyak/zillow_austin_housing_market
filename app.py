@@ -92,5 +92,14 @@ def austin_zestiamtes_percentages():
     return austin_zestimates_percentages_data_json
 
     
+@app.route('/visualization_1')
+def visualization_1():
+    #return render_template('')
 
-    
+@app.route('/visualization_2')
+def visualization_2():
+    #return render_template('')
+
+@app.route('/visualization_3')
+def visualization_3():
+    #return render_template('')
