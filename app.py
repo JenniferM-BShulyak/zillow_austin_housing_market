@@ -7,7 +7,7 @@ from flask import Flask, jsonify, render_template
 import pandas as pd
 
 # Create connection
-engine = create_engine('postgresql://postgres:Vossed203!@localhost:5432/Austin_Housing')
+engine = create_engine('postgresql://postgres:2066325373@localhost:5432/zillow')
 
 # Reflect tables
 Base = automap_base()

@@ -7,9 +7,9 @@ function init_line() {
 
     // Define Layout
     var layout = {
-        title: "Zestimates of Well Known Zipcodes",
+        title: "Our Love of Austin",
         xaxis: {title: "Date"},
-        yaxis: {title: "Zestimate in $"}
+        yaxis: {title: "Number of Hearts We Give Austin"}
     };
     
     Plotly.newPlot("lineplot", data, layout);
@@ -31,7 +31,24 @@ function updateLineGraph() {
     let x = [];
     let y = [];
     console.log('BEFORE')
-    if (toggleChoice === "zestimates") {
+    if (toggleChoice === "AustinLove") {
+        data = [{
+            x:[1,2,3,4,5],
+            y:[2,4,8,16,32]
+        }];
+    
+        // Define Layout
+        var update = {
+            title: "Our Love of Austin",
+            xaxis: {title: "Number of Years in Austin"},
+            yaxis: {title: "Number of Hearts We Give Austin"}
+        };
+           // Update the plot
+        Plotly.restyle("lineplot", "x", [x_new]);
+        Plotly.restyle("lineplot", "y", [y_new]);
+        Plotly.relayout("lineplot", update);
+    }
+    else if (toggleChoice === "zestimates") {
       
             fetch('/zestimates').then(
                 (response) => (response.json()).then(dataFormatting_z)
