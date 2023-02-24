@@ -32,9 +32,9 @@ function updateLineGraph() {
 
     if (toggleChoice === "zestimates") {
       
-            d3.json("/austin_zestimates_data").then((data) => 
-            
-            console.log(data))
+            fetch('/zestimates').then(
+                (response) => (response.json())
+            )
             
             x = [1,2,3,4,5]
             y = [2,4,8,16,32]
