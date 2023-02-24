@@ -11,6 +11,7 @@ function init_line() {
         xaxis: {title: "Date"},
         yaxis: {title: "Zestimate in $"}
     };
+    
     Plotly.newPlot("lineplot", data, layout);
 }
 
@@ -29,40 +30,79 @@ function updateLineGraph() {
     // How will data be pulled from SQL? 
     let x = [];
     let y = [];
-
+    console.log('BEFORE')
     if (toggleChoice === "zestimates") {
       
             fetch('/zestimates').then(
-                (response) => (response.json())
+                (response) => (response.json()).then(dataFormatting_z)
             )
-            
-            x = [1,2,3,4,5]
-            y = [2,4,8,16,32]
-        
-        
 
-        var update = {
-            title: "Zestimates of Well Known Zipcodes",
-            xaxis: {title: "Date"},
-            yaxis: {title: "Zestimate in $"}
-        };
     }
 
     else if (toggleChoice === "percentage") {
-        x = [1,2,3,4,5];
-        y = [3,9,27,81,243];
+        fetch('/zestimates_percentages').then(
+            (response) => (response.json()).then(dataFormatting_zpercent)
+        )
 
-        var update = {
-            title: "Percent Change in Zestimate of Well Known Zipcodes",
-            xaxis: {title: "Date"},
-            yaxis: {title: "Percent Change"}
-        };
     }
 
+    
+}
+// Zestimates 
+function dataFormatting_z(data) {
+    // 78739: Circle C 
+    circleC = data["78739"]
+    var xDates = [];
+    var yCircleC = [];
+    for (const [key, value] of Object.entries(circleC)) {
+        xDates.push(key)
+        yCircleC.push(value)
+      }
+    // 78703: Tarrytown/Mt Bonnell
+
+    plotRestyle_z(xDates, yCircleC)
+
+}
+
+function plotRestyle_z(x_new, y_new) {
+
+    var update = {
+        title: "Zestimates of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Zestimate in $"}
+    };
     // Update the plot
-    Plotly.restyle("lineplot", "x", [x]);
-    Plotly.restyle("lineplot", "y", [y]);
+    Plotly.restyle("lineplot", "x", [x_new]);
+    Plotly.restyle("lineplot", "y", [y_new]);
     Plotly.relayout("lineplot", update)
 }
 
+// Zestimate Percentage Change Over Time 
+function dataFormatting_zpercent(data) {
+    // 78739: Circle C 
+    circleC = data["78739"]
+    var xDates = [];
+    var yCircleC = [];
+    for (const [key, value] of Object.entries(circleC)) {
+        xDates.push(key)
+        yCircleC.push(value)
+      }
+    // 78703: Tarrytown/Mt Bonnell
+
+    plotRestyle_zpercent(xDates, yCircleC)
+
+}
+
+function plotRestyle_zpercent(x_new, y_new) {
+
+    var update = {
+        title: "Percent Change in Zestimate of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Percent Change"}
+    };
+    // Update the plot
+    Plotly.restyle("lineplot", "x", [x_new]);
+    Plotly.restyle("lineplot", "y", [y_new]);
+    Plotly.relayout("lineplot", update)
+}
 init_line();
