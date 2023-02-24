@@ -151,5 +151,5 @@ CREATE Table Austin_Zestimates_Percentages (
 /*Replace path with your sql server data path*/
 copy Austin_Metro from 'C:\Program Files\edb\as12\data\rentals_over_time.csv' with (format csv);
 copy Austin_Zestimates from 'C:\Program Files\edb\as12\data\zestimates_over_time.csv' with (format csv);
-copy Austin_Metro_percentages from 'C:\Program Files\edb\as12\data\rentals_over_time.csv' with (format csv);
-copy Austin_Zestimates_percentages from 'C:\Program Files\edb\as12\data\zestimates_over_time.csv' with (format csv);
+copy Austin_Metro_percentages from 'C:\Program Files\edb\as12\data\rentals_percent_changes_over_time.csv' with (format csv);
+copy Austin_Zestimates_percentages from 'C:\Program Files\edb\as12\data\zestimate_changes_over_time.csv' with (format csv);
