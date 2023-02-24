@@ -60,44 +60,44 @@ function updateLineGraph() {
 ////////////////////////////////////////////////////
 // Zestimates 
 function dataFormatting_z(data) {
-    // 78739: Circle C 
-    circleC = data["78739"];
-    var xDates = [];
-    var yCircleC = [];
-    for (const [key, value] of Object.entries(circleC)) {
-        xDates.push(key)
-        yCircleC.push(value)
-      }
-    var traceCircleC = {
-        x: xDates,
-        y: yCircleC,
-        name: "CircleC 78739"
-    }
-
+    
+    // 78739: Circle C
+    var circleC = data["78739"];
+    var traceCircleC = getTrace(circleC, "CircleC 78739");
     // 78703: Tarrytown/Mt Bonnell
     var tarryTown = data["78703"];
-    var traceTarryTown = getTrace(tarryTown, "Tarry Town")
+    var traceTarryTown = getTrace(tarryTown, "Tarry Town 78703");
+    // 78759: Arboretum 
+    var arboretum = data["78759"];
+    var traceArboretum = getTrace(arboretum, "Arboretum 78759");
+    // 78758 North Austin
+    var northAustin = data["78758"];
+    var traceNorthAustin = getTrace(northAustin, "North Austin 78758");
+    // 78723 MLK
+    var mlk = data["78723"];
+    var traceMLK = getTrace(mlk, "MLK 78723");
+    // 78741 Riverside
+    var riverSide = data["78741"];
+    var traceRiverSide = getTrace(riverSide, "Riverside 78741");
+    // 78745 South Austin
+    var southAustin = data["78745"];
+    var traceSouthAustin = getTrace(southAustin, "South Austin 78745")
+
+
 
     // Set dataToGraph
-    var dataToGraph = [traceCircleC, traceTarryTown]
+    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin]
     // Set layout
     var layout = {
         title: "Zestimates of Well Known Zipcodes",
         xaxis: {title: "Date"},
         yaxis: {title: "Zestimate in $"}
     };
-    plotRestyle_z(dataToGraph, layout)
-
-}
-
-function plotRestyle_z(dataToGraph, layout) {
-
     Plotly.newPlot("lineplot", dataToGraph, layout);
-    // Update the plot
-    // Plotly.restyle("lineplot", "x", [x_new]);
-    // Plotly.restyle("lineplot", "y", [y_new]);
-    // Plotly.relayout("lineplot", update)
-}
+
+};
+
+
 
 // Zestimate Percentage Change Over Time 
 function dataFormatting_zpercent(data) {
