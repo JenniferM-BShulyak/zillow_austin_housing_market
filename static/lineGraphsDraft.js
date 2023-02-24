@@ -1,15 +1,15 @@
 // Initialize Page with first plot
 function init_line() {
     data = austinLove()
-    // Define Layout
+    // Define austinLove Layout
     var layout = {
         title: "Our Love of Austin",
         xaxis: {title: "Number of Years in Austin"},
         yaxis: {title: "Number of Hearts We Give Austin"}
     };
-    
+    // Plot austinLove
     Plotly.newPlot("lineplot", data, layout);
-}
+};
 
 // Call updateLineGraph() when _____ is done
 d3.selectAll("#toggleOptions").on("change", updateLineGraph);
@@ -22,13 +22,10 @@ function updateLineGraph() {
     // Assign the value of the event to a variable
     let toggleChoice = toggle.property("value");
 
-    // Grab what the x and y values will now be
-    // How will data be pulled from SQL? 
-    let x = [];
-    let y = [];
-    console.log('BEFORE')
+    // Toggle options
+    //Toggle for "Homepage" AustinLove
     if (toggleChoice === "AustinLove") {
-        data = austinLove()
+        var data = austinLove();    // Grab Austin Love data
     
         // Define Layout
         var layout = {
@@ -38,29 +35,119 @@ function updateLineGraph() {
         };
         // Graph new plot
         Plotly.newPlot("lineplot", data, layout);
-        
-    }
+         }
+
+    // Toggle for Zestimates
     else if (toggleChoice === "zestimates") {
-      
-            fetch('/zestimates').then(
-                (response) => (response.json()).then(dataFormatting_z)
-            )
+        // Fetch the zestimate data from the zestimates route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/zestimates').then(
+            (response) => (response.json()).then(dataFormatting_z)  
+        ) }
 
-    }
-
-    else if (toggleChoice === "percentage") {
+    // Toggle for percentage change in zestimates 
+    else if (toggleChoice === "zPercentChange") {
+        // Fetch the zestimate data from the zestimates route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
         fetch('/zestimates_percentages').then(
             (response) => (response.json()).then(dataFormatting_zpercent)
-        )
-
-    }
-
+        )  }
+        
+    // Toggle for rental prices 
+    else if (toggleChoice === "rental") {
+        // Fetch the rentals data from the rentals route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/rental_data').then(
+            (response) => (response.json()).then(dataFormatting_rentals)
+        )  }
     
-}
+    // Toggle for rental prices 
+    else if (toggleChoice === "rPercentChange") {
+        // Fetch the rentals data from the rentals route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/rental_percentages').then(
+            (response) => (response.json()).then(dataFormatting_rPercent)
+        )  }
+    
+};
 ////////////////////////////////////////////////////
-// Zestimates 
+
+// Zestimates Function: function to grab data, format data, and plot data for the zestimates over time
 function dataFormatting_z(data) {
-    
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Zestimates of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Zestimate in $"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
+
+// Percent Change in Zestimates Function: function to grab data, format data, and plot data for the Zestimate Percentage Change Over Time 
+function dataFormatting_zpercent(data) {
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Percent Change in Zestimate of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Percent Change"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
+
+// Rentals Function: function to grab data, format data, and plot data for the rental prices over time
+function dataFormatting_rentals(data) {
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Rental Prices of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Rental Price in $"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
+
+// Rentals Function: function to grab data, format data, and plot data for the rental prices over time
+function dataFormatting_rPercent(data) {
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Percent Change in Rental Prices of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Percent Change"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
+
+///////////////////////////////////////////////////
+//Function to grab trace values:
+function getTrace(zipData, zip) {
+    var xZip = [];
+    var yZip = [];
+    for (const [key, value] of Object.entries(zipData)) {
+        xZip.push(key);
+        yZip.push(value);
+      };
+    var trace = {
+        x: xZip,
+        y: yZip,
+        name: zip
+    };
+    return trace
+};
+
+// Function to grab data
+function grabAxes(data) {
+
     // 78739: Circle C
     var circleC = data["78739"];
     var traceCircleC = getTrace(circleC, "CircleC 78739");
@@ -86,64 +173,9 @@ function dataFormatting_z(data) {
 
 
     // Set dataToGraph
-    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin]
-    // Set layout
-    var layout = {
-        title: "Zestimates of Well Known Zipcodes",
-        xaxis: {title: "Date"},
-        yaxis: {title: "Zestimate in $"}
-    };
-    Plotly.newPlot("lineplot", dataToGraph, layout);
-
+    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin];
+    return dataToGraph
 };
-
-
-
-// Zestimate Percentage Change Over Time 
-function dataFormatting_zpercent(data) {
-    // 78739: Circle C 
-    circleC = data["78739"]
-    var xDates = [];
-    var yCircleC = [];
-    for (const [key, value] of Object.entries(circleC)) {
-        xDates.push(key)
-        yCircleC.push(value)
-      }
-    // 78703: Tarrytown/Mt Bonnell
-
-    plotRestyle_zpercent(xDates, yCircleC)
-
-}
-
-function plotRestyle_zpercent(x_new, y_new) {
-
-    var update = {
-        title: "Percent Change in Zestimate of Well Known Zipcodes",
-        xaxis: {title: "Date"},
-        yaxis: {title: "Percent Change"}
-    };
-    // Update the plot
-    Plotly.restyle("lineplot", "x", [x_new]);
-    Plotly.restyle("lineplot", "y", [y_new]);
-    Plotly.relayout("lineplot", update)
-};
-
-//Function to grab trace data:
-function getTrace(zipData, zip) {
-    var xZip = [];
-    var yZip = [];
-    for (const [key, value] of Object.entries(zipData)) {
-        xZip.push(key);
-        yZip.push(value);
-      };
-    var trace = {
-        x: xZip,
-        y: yZip,
-        name: zip
-    };
-    return trace
-};
-
 ///////////////////////////////////////////////
 // Function to graph our love of Austin
 function austinLove() {
