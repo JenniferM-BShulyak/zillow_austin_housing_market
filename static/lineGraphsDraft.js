@@ -52,13 +52,21 @@ function updateLineGraph() {
         fetch('/zestimates_percentages').then(
             (response) => (response.json()).then(dataFormatting_zpercent)
         )  }
-
+        
+    // Toggle for rental prices 
+    else if (toggleChoice === "rental") {
+        // Fetch the rentals data from the rentals route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/rental_data').then(
+            (response) => (response.json()).then(dataFormatting_rentals)
+        )  }
     
-}
+};
 ////////////////////////////////////////////////////
 
 // Zestimates Function: function to grab data, format data, and plot data for the zestimates over time
 function dataFormatting_z(data) {
+    // Send data to grabAxes function to prepare it for plotting
     var dataToGraph = grabAxes(data);
     // Set layout
     var layout = {
@@ -66,11 +74,13 @@ function dataFormatting_z(data) {
         xaxis: {title: "Date"},
         yaxis: {title: "Zestimate in $"}
     };
+    // Plot it! 
     Plotly.newPlot("lineplot", dataToGraph, layout);
 };
 
-// Zestimates Function: function to grab data, format data, and plot data for the zestimates over time// Zestimate Percentage Change Over Time 
+// Percent Change in Zestimates Function: function to grab data, format data, and plot data for the Zestimate Percentage Change Over Time 
 function dataFormatting_zpercent(data) {
+    // Send data to grabAxes function to prepare it for plotting
     var dataToGraph = grabAxes(data);
     // Set layout
     var layout = {
@@ -78,8 +88,23 @@ function dataFormatting_zpercent(data) {
         xaxis: {title: "Date"},
         yaxis: {title: "Percent Change"}
     };
+    // Plot it! 
     Plotly.newPlot("lineplot", dataToGraph, layout);
-}
+};
+
+// Rentals Function: function to grab data, format data, and plot data for the rental prices over time
+function dataFormatting_rentals(data) {
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Rental Prices of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Rental Price in $"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
 
 //Function to grab trace values:
 function getTrace(zipData, zip) {
