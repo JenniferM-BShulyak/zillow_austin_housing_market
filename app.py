@@ -101,7 +101,7 @@ def zestimates_percentages():
     
 @app.route('/GraphingOverTime')
 def visualization_1():
-    return render_template('templates/indexLineGraphsDraft.html')
+    return render_template('indexLineGraphsDraft.html')
 
 # @app.route('/visualization_2')
 # def visualization_2():
