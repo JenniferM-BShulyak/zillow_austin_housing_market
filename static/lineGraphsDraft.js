@@ -11,6 +11,7 @@ function init_line() {
         xaxis: {title: "Date"},
         yaxis: {title: "Zestimate in $"}
     };
+    
     Plotly.newPlot("lineplot", data, layout);
 }
 
@@ -29,13 +30,13 @@ function updateLineGraph() {
     // How will data be pulled from SQL? 
     let x = [];
     let y = [];
-
+    console.log('BEFORE')
     if (toggleChoice === "zestimates") {
       
             fetch('/zestimates').then(
-                (response) => (response.json())
+                (response) => (response.json()).then(dataFormatting)
             )
-            
+            console.log('arghhhhhhh');
             x = [1,2,3,4,5]
             y = [2,4,8,16,32]
         
@@ -65,4 +66,17 @@ function updateLineGraph() {
     Plotly.relayout("lineplot", update)
 }
 
+function dataFormatting(data) {
+    // 78703: Tarrytown/Mt Bonnell
+    // 78739: Circle C 
+    circleC = data["78739"]
+    var xDates = [];
+    var yCircleC = [];
+    for 
+
+}
+
+function plotRestyle() {
+
+}
 init_line();
