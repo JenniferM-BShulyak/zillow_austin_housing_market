@@ -7,7 +7,7 @@ from flask import Flask, jsonify, render_template
 import pandas as pd
 
 # Create connection
-engine = create_engine('postgresql://postgres:2066325373@localhost:5432/zillow')
+engine = create_engine('postgresql://postgres:Vossed203!@localhost:5432/Austin_Housing')
 
 # Reflect tables
 Base = automap_base()
@@ -102,6 +102,10 @@ def zestimates_percentages():
 @app.route('/GraphingOverTime')
 def visualization_1():
     return render_template('indexLineGraphsDraft.html')
+
+@app.route('/SummaryComparison')
+def visualization_2():
+    return render_template('SummaryComparison.html')
 
 # @app.route('/visualization_2')
 # def visualization_2():
