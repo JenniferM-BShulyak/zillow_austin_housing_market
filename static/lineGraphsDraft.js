@@ -61,6 +61,14 @@ function updateLineGraph() {
             (response) => (response.json()).then(dataFormatting_rentals)
         )  }
     
+    // Toggle for rental prices 
+    else if (toggleChoice === "rPercentChange") {
+        // Fetch the rentals data from the rentals route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/rental_percentages').then(
+            (response) => (response.json()).then(dataFormatting_rPercent)
+        )  }
+    
 };
 ////////////////////////////////////////////////////
 
@@ -106,6 +114,21 @@ function dataFormatting_rentals(data) {
     Plotly.newPlot("lineplot", dataToGraph, layout);
 };
 
+// Rentals Function: function to grab data, format data, and plot data for the rental prices over time
+function dataFormatting_rPercent(data) {
+    // Send data to grabAxes function to prepare it for plotting
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
+        title: "Percent Change in Rental Prices of Well Known Zipcodes",
+        xaxis: {title: "Date"},
+        yaxis: {title: "Percent Change"}
+    };
+    // Plot it! 
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+};
+
+///////////////////////////////////////////////////
 //Function to grab trace values:
 function getTrace(zipData, zip) {
     var xZip = [];
