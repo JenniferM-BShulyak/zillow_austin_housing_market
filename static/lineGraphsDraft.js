@@ -1,14 +1,10 @@
 // Initialize Page with first plot
 function init_line() {
-    data = [{
-        x:[1,2,3,4,5],
-        y:[2,4,8,16,32]
-    }];
-
+    data = austinLove()
     // Define Layout
     var layout = {
         title: "Our Love of Austin",
-        xaxis: {title: "Date"},
+        xaxis: {title: "Number of Years in Austin"},
         yaxis: {title: "Number of Hearts We Give Austin"}
     };
     
@@ -32,21 +28,17 @@ function updateLineGraph() {
     let y = [];
     console.log('BEFORE')
     if (toggleChoice === "AustinLove") {
-        data = [{
-            x:[1,2,3,4,5],
-            y:[2,4,8,16,32]
-        }];
+        data = austinLove()
     
         // Define Layout
-        var update = {
+        var layout = {
             title: "Our Love of Austin",
             xaxis: {title: "Number of Years in Austin"},
             yaxis: {title: "Number of Hearts We Give Austin"}
         };
-           // Update the plot
-        Plotly.restyle("lineplot", "x", [x_new]);
-        Plotly.restyle("lineplot", "y", [y_new]);
-        Plotly.relayout("lineplot", update);
+        // Graph new plot
+        Plotly.newPlot("lineplot", data, layout);
+        
     }
     else if (toggleChoice === "zestimates") {
       
@@ -121,5 +113,40 @@ function plotRestyle_zpercent(x_new, y_new) {
     Plotly.restyle("lineplot", "x", [x_new]);
     Plotly.restyle("lineplot", "y", [y_new]);
     Plotly.relayout("lineplot", update)
-}
+};
+
+///////////////////////////////////////////////
+// Function to graph our love of Austin
+function austinLove() {
+    var trace_js = {
+        x:[1,2,3,4,5,6,7,8,9,10,11],
+        y:[1,2,4,8,16,32,30,28,30,34,36],
+        name: "Jenn's"
+    };
+    var trace_b = {
+        x:[1,2,3,4,5],
+        y:[2,4,6,8,10],
+        name: "Bobby's"
+    };
+    var trace_o = {
+        x:[1,2,3,4,5],
+        y:[12,10,8,6,4],
+        name: "Omar's"
+    };
+    var trace_jb = {
+        x:[1,2,3,4,5],
+        y:[1,4,9,15,10],
+        name: "Jackson's"
+    };
+    var trace_jm = {
+        x:[1,2,3,4,5],
+        y:[20,10,6,12,15],
+        name: "Joe's"
+    };
+    var data = [trace_js, trace_b, trace_o, trace_jb, trace_jm];
+
+    
+    return data
+};
+
 init_line();
