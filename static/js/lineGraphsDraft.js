@@ -34,7 +34,7 @@ function updateLineGraph() {
       
             fetch('/zestimates').then(
                 (response) => (response.json())
-            ).then(console.log)
+            )
             
             x = [1,2,3,4,5]
             y = [2,4,8,16,32]
