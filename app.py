@@ -39,7 +39,9 @@ def austin_metro():
 
     austin_metro = session.query(Austin_metro)
     austin_metro_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_metro] 
-    austin_metro_json = pd.DataFrame(austin_metro_data).to_json
+    austin_metro_df = pd.DataFrame(austin_metro_data)
+    austin_metro_df.set_index("dates", inplace=True)
+    austin_metro_json = austin_metro_df.to_json()
 
     session.close()
 
@@ -53,7 +55,9 @@ def austin_metro_percentages():
 
     austin_metro_percentages = session.query(Austin_metro_percentages)
     austin_metro_percentages_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_metro_percentages] 
-    austin_metro_percentages_json = pd.DataFrame(austin_metro_percentages_data).to_json
+    austin_metro_percentages_df = pd.DataFrame(austin_metro_percentages_data)
+    austin_metro_percentages_df.set_index("dates", inplace=True)
+    austin_metro_percentages_json = austin_metro_percentages_df.to_json()
 
     session.close()
 
@@ -69,7 +73,9 @@ def austin_zestiamtes():
 
     austin_zestimates = session.query(Austin_zestimates)
     austin_zestimates_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_zestimates] 
-    austin_zestimates_json = pd.DataFrame(austin_zestimates_data).to_json
+    austin_zestimates_df = pd.DataFrame(austin_zestimates_data)
+    austin_zestimates_df.set_index("dates", inplace=True)
+    austin_zestimates_json = austin_zestimates_df.to_json()
 
     session.close()
 
@@ -83,13 +89,15 @@ def austin_zestiamtes_percentages():
 
     austin_zestimates_percentages = session.query(Austin_zestimates_percentages)
     austin_zestimates_percentages_data = [{k:v for k, v in row.__dict__.items() if k != '_sa_instance_state'} for row in austin_zestimates_percentages] 
-    austin_zestimates_percentages_data_json = pd.DataFrame(austin_zestimates_percentages_data).to_json
+    austin_zestimates_percentages_df = pd.DataFrame(austin_zestimates_percentages_data)
+    austin_zestimates_percentages_df.set_index("dates", inplace=True)
+    austin_zestimates_percentages_json = austin_zestimates_percentages_df.to_json()
 
     session.close()
 
    
 
-    return austin_zestimates_percentages_data_json
+    return austin_zestimates_percentages_json
 
     
 @app.route('/visualization_1')
