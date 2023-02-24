@@ -57,7 +57,7 @@ function updateLineGraph() {
 }
 ////////////////////////////////////////////////////
 
-// Zestimates 
+// Zestimates Function: function to grab data, format data, and plot data for the zestimates over time
 function dataFormatting_z(data) {
     var dataToGraph = grabAxes(data);
     // Set layout
@@ -67,39 +67,19 @@ function dataFormatting_z(data) {
         yaxis: {title: "Zestimate in $"}
     };
     Plotly.newPlot("lineplot", dataToGraph, layout);
-
 };
 
-
-
-// Zestimate Percentage Change Over Time 
+// Zestimates Function: function to grab data, format data, and plot data for the zestimates over time// Zestimate Percentage Change Over Time 
 function dataFormatting_zpercent(data) {
-    // 78739: Circle C 
-    circleC = data["78739"]
-    var xDates = [];
-    var yCircleC = [];
-    for (const [key, value] of Object.entries(circleC)) {
-        xDates.push(key)
-        yCircleC.push(value)
-      }
-    // 78703: Tarrytown/Mt Bonnell
-
-    plotRestyle_zpercent(xDates, yCircleC)
-
-}
-
-function plotRestyle_zpercent(x_new, y_new) {
-
-    var update = {
+    var dataToGraph = grabAxes(data);
+    // Set layout
+    var layout = {
         title: "Percent Change in Zestimate of Well Known Zipcodes",
         xaxis: {title: "Date"},
         yaxis: {title: "Percent Change"}
     };
-    // Update the plot
-    Plotly.restyle("lineplot", "x", [x_new]);
-    Plotly.restyle("lineplot", "y", [y_new]);
-    Plotly.relayout("lineplot", update)
-};
+    Plotly.newPlot("lineplot", dataToGraph, layout);
+}
 
 //Function to grab trace values:
 function getTrace(zipData, zip) {
