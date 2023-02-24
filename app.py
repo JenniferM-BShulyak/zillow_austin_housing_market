@@ -1,13 +1,13 @@
 # Import functions
-import sqlalchemy
+#import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import pandas as pd
 
 # Create connection
-engine = create_engine('postgresql://postgres:Jb631834@localhost:5432/Austin_Housing')
+engine = create_engine('postgresql://postgres:2066325373@localhost:5432/zillow')
 
 # Reflect tables
 Base = automap_base()
@@ -30,11 +30,10 @@ def page_name():
     return jsonify() # add routes
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
 
-@app.route('/austin_metro_data')
-def austin_metro():
+
+@app.route('/rental_data')
+def rental_data():
     session = Session(engine)
 
     austin_metro = session.query(Austin_metro)
@@ -49,8 +48,8 @@ def austin_metro():
 
     return austin_metro_json
 
-@app.route('/austin_metro_percentages_data')
-def austin_metro_percentages():
+@app.route('/rental_percentages')
+def rental_percentages():
     session = Session(engine)
 
     austin_metro_percentages = session.query(Austin_metro_percentages)
@@ -67,8 +66,8 @@ def austin_metro_percentages():
     
 
 
-@app.route('/austin_zestimates_data')
-def austin_zestiamtes():
+@app.route('/zestimates')
+def zestimates():
     session = Session(engine)
 
     austin_zestimates = session.query(Austin_zestimates)
@@ -83,8 +82,8 @@ def austin_zestiamtes():
 
     return austin_zestimates_json
 
-@app.route('/austin_zestimates_percentages_data')
-def austin_zestiamtes_percentages():
+@app.route('/zestimates_percentages')
+def zestimates_percentages():
     session = Session(engine)
 
     austin_zestimates_percentages = session.query(Austin_zestimates_percentages)
@@ -100,14 +99,18 @@ def austin_zestiamtes_percentages():
     return austin_zestimates_percentages_json
 
     
-@app.route('/visualization_1')
+@app.route('/GraphingOverTime')
 def visualization_1():
-    #return render_template('')
+    return render_template('indexLineGraphsDraft.html')
 
-@app.route('/visualization_2')
-def visualization_2():
-    #return render_template('')
+# @app.route('/visualization_2')
+# def visualization_2():
+#     #return render_template('')
 
-@app.route('/visualization_3')
-def visualization_3():
-    #return render_template('')
+# @app.route('/visualization_3')
+# def visualization_3():
+#     #return render_template('')
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
