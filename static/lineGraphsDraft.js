@@ -1,15 +1,15 @@
 // Initialize Page with first plot
 function init_line() {
     data = austinLove()
-    // Define Layout
+    // Define austinLove Layout
     var layout = {
         title: "Our Love of Austin",
         xaxis: {title: "Number of Years in Austin"},
         yaxis: {title: "Number of Hearts We Give Austin"}
     };
-    
+    // Plot austinLove
     Plotly.newPlot("lineplot", data, layout);
-}
+};
 
 // Call updateLineGraph() when _____ is done
 d3.selectAll("#toggleOptions").on("change", updateLineGraph);
@@ -22,13 +22,10 @@ function updateLineGraph() {
     // Assign the value of the event to a variable
     let toggleChoice = toggle.property("value");
 
-    // Grab what the x and y values will now be
-    // How will data be pulled from SQL? 
-    let x = [];
-    let y = [];
-    console.log('BEFORE')
+    // Toggle options
+    //Toggle for "Homepage" AustinLove
     if (toggleChoice === "AustinLove") {
-        data = austinLove()
+        var data = austinLove();    // Grab Austin Love data
     
         // Define Layout
         var layout = {
@@ -38,55 +35,31 @@ function updateLineGraph() {
         };
         // Graph new plot
         Plotly.newPlot("lineplot", data, layout);
-        
-    }
+         }
+
+    // Toggle for Zestimates
     else if (toggleChoice === "zestimates") {
-      
-            fetch('/zestimates').then(
-                (response) => (response.json()).then(dataFormatting_z)
-            )
+        // Fetch the zestimate data from the zestimates route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
+        fetch('/zestimates').then(
+            (response) => (response.json()).then(dataFormatting_z)  
+        ) }
 
-    }
-
-    else if (toggleChoice === "percentage") {
+    // Toggle for percentage change in zestimates 
+    else if (toggleChoice === "zPercentChange") {
+        // Fetch the zestimate data from the zestimates route
+        // FIRST fetch the data, THEN convert it to json, THEN send it to the formatting function
         fetch('/zestimates_percentages').then(
             (response) => (response.json()).then(dataFormatting_zpercent)
-        )
-
-    }
+        )  }
 
     
 }
 ////////////////////////////////////////////////////
+
 // Zestimates 
 function dataFormatting_z(data) {
-    
-    // 78739: Circle C
-    var circleC = data["78739"];
-    var traceCircleC = getTrace(circleC, "CircleC 78739");
-    // 78703: Tarrytown/Mt Bonnell
-    var tarryTown = data["78703"];
-    var traceTarryTown = getTrace(tarryTown, "Tarry Town 78703");
-    // 78759: Arboretum 
-    var arboretum = data["78759"];
-    var traceArboretum = getTrace(arboretum, "Arboretum 78759");
-    // 78758 North Austin
-    var northAustin = data["78758"];
-    var traceNorthAustin = getTrace(northAustin, "North Austin 78758");
-    // 78723 MLK
-    var mlk = data["78723"];
-    var traceMLK = getTrace(mlk, "MLK 78723");
-    // 78741 Riverside
-    var riverSide = data["78741"];
-    var traceRiverSide = getTrace(riverSide, "Riverside 78741");
-    // 78745 South Austin
-    var southAustin = data["78745"];
-    var traceSouthAustin = getTrace(southAustin, "South Austin 78745")
-
-
-
-    // Set dataToGraph
-    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin]
+    var dataToGraph = grabAxes(data);
     // Set layout
     var layout = {
         title: "Zestimates of Well Known Zipcodes",
@@ -128,7 +101,7 @@ function plotRestyle_zpercent(x_new, y_new) {
     Plotly.relayout("lineplot", update)
 };
 
-//Function to grab trace data:
+//Function to grab trace values:
 function getTrace(zipData, zip) {
     var xZip = [];
     var yZip = [];
@@ -144,6 +117,37 @@ function getTrace(zipData, zip) {
     return trace
 };
 
+// Function to grab data
+function grabAxes(data) {
+
+    // 78739: Circle C
+    var circleC = data["78739"];
+    var traceCircleC = getTrace(circleC, "CircleC 78739");
+    // 78703: Tarrytown/Mt Bonnell
+    var tarryTown = data["78703"];
+    var traceTarryTown = getTrace(tarryTown, "Tarry Town 78703");
+    // 78759: Arboretum 
+    var arboretum = data["78759"];
+    var traceArboretum = getTrace(arboretum, "Arboretum 78759");
+    // 78758 North Austin
+    var northAustin = data["78758"];
+    var traceNorthAustin = getTrace(northAustin, "North Austin 78758");
+    // 78723 MLK
+    var mlk = data["78723"];
+    var traceMLK = getTrace(mlk, "MLK 78723");
+    // 78741 Riverside
+    var riverSide = data["78741"];
+    var traceRiverSide = getTrace(riverSide, "Riverside 78741");
+    // 78745 South Austin
+    var southAustin = data["78745"];
+    var traceSouthAustin = getTrace(southAustin, "South Austin 78745")
+
+
+
+    // Set dataToGraph
+    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin];
+    return dataToGraph
+};
 ///////////////////////////////////////////////
 // Function to graph our love of Austin
 function austinLove() {
