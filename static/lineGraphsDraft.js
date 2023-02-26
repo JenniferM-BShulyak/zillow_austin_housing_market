@@ -148,9 +148,9 @@ function getTrace(zipData, zip) {
 // Function to grab data
 function grabAxes(data) {
 
-    // 78739: Circle C
-    var circleC = data["78739"];
-    var traceCircleC = getTrace(circleC, "CircleC 78739");
+    // 78749: Oak Hill
+    var oakHill = data["78749"];
+    var traceOakHill = getTrace(oakHill, "Oak Hill 78749");
     // 78703: Tarrytown/Mt Bonnell
     var tarryTown = data["78703"];
     var traceTarryTown = getTrace(tarryTown, "Tarry Town 78703");
@@ -162,18 +162,21 @@ function grabAxes(data) {
     var traceNorthAustin = getTrace(northAustin, "North Austin 78758");
     // 78723 MLK
     var mlk = data["78723"];
-    var traceMLK = getTrace(mlk, "MLK 78723");
+    var traceMLK = getTrace(mlk, "MLK/Mueller 78723");
     // 78741 Riverside
     var riverSide = data["78741"];
     var traceRiverSide = getTrace(riverSide, "Riverside 78741");
     // 78745 South Austin
     var southAustin = data["78745"];
     var traceSouthAustin = getTrace(southAustin, "South Austin 78745")
+    // 78702 East Caesar Chavez 
+    var eCC = data["78702"];
+    var traceeCC = getTrace(eCC, "East Caesar Chavez 78702")
 
 
 
     // Set dataToGraph
-    var dataToGraph = [traceCircleC, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin];
+    var dataToGraph = [traceOakHill, traceTarryTown, traceArboretum, traceNorthAustin, traceMLK, traceRiverSide, traceSouthAustin, traceeCC];
     return dataToGraph
 };
 ///////////////////////////////////////////////
