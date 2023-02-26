@@ -6,16 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Housing in Metro Austin</title>
+  <link rel="stylesheet" href="style.css">
   <script scr="{{url_for('static', filename= app.js)}}"></script>
+  <style>
+  body {
+    background-color: rgb(10, 237, 10);
+}
+</style>
 </head>
 
 <body>
-  <h1> Austin Housing Market </h1>
-  <ul>
-    <li><a href="indexLineGraphsDraft.html">Line Graphs</a></li>
-    <li><a href="map.html">Map View</a></li>
-    <li><a href="SummaryComparison.html">Summary Table</a></li>
-  </ul>
+  <header>
+    <nav align="center">
+      <div class="container">
+        <h1><a href="index.html">Austin Housing Market</a></h1>
+        <ul>
+          <li><a href="indexLineGraphsDraft.html">Line Graphs</a></li>
+          <li><a href="map.html">Map View</a></li>
+          <li><a href="SummaryComparison.html">Summary Table</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2 align="center">Welcome to the Zillow Austin Housing Market!</h2>
+        <h3 align="center">Discover trends and insights with our interactive visualizations!</h3>
+        
+        <p><b>Project Background and Purpose</b>
+        <p>The housing market in Austin has been changing rapidly as the Austin Metroplex swells. Segregationalist policies still scar the city of Austin to this day, and Austin "has one of the highest rates of income segregation in the country." This project sought to see if projected housing prices and rental data would show past/current segregation patterns and evidence of gentrification.
+        <p><i>Zehr, D. (n.d.). Inheriting inequality: Austin's segregation and gentrification. Statesman. Retrieved February 2023, from https://projects.statesman.com/news/economic-mobility/</i></p>
+      </div>
+    </section>
+    
+    <section class="features">
+  <div class="container">
+    <div class="feature">
+      <h3>Line Graphs</h3>
+      <p>Explore housing market trends over time with our interactive line graphs.</p>
+      <a href="indexLineGraphsDraft.html">View Line Graphs</a>
+    </div>
+    <div class="feature">
+      <h3>Map View</h3>
+      <p>View the distribution of housing prices across the Austin area with our interactive map.</p>
+      <a href="map.html">View Map</a>
+    </div>
+    <div class="feature">
+      <h3>Summary Table</h3>
+      <p>Compare key housing market metrics across different neighborhoods with our summary table.</p>
+      <a href="SummaryComparison.html">View Summary Table</a>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer align="center">
+    <div class="container">
+      <p>Datasets were downloaded from:
+      <p>https://www.zillow.com/research/data/ as CSVs
+      <p>The following datasets were used: 
+      <p>ZHVI (zestimate) for single family homes in the mid-tier (35th - 65th percentile) 
+      <p>ZORI (home and apartment rental price) in the mid-tier (40th-60th percentile)
+        More information about zillow:
+
+      <p>Zillow Home Value Index (ZHVI): A measure of the typical home value and market changes across a given region and housing type. It reflects the typical value for homes in the 35th to 65th percentile range. Available as a smoothed, seasonally adjusted measure and as a raw measure.
+      <p>Zillow Observed Rent Index (ZORI): A smoothed measure of the typical observed market rate rent across a given region. ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure representativeness across the entire market, not just those homes currently listed for-rent. The index is dollar-denominated by computing the mean of listed rents that fall into the 40th to 60th percentile range for all homes and apartments in a given region, which is once again weighted to reflect the rental housing stock.
+      <p>ZHVI and ZORI definitions were taken from https://www.zillow.com/research/data/
+      </p>
+    </div>
+  </footer>
+
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="static/lineGraphsDraft.js"></script>
