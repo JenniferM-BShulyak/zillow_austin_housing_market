@@ -2,7 +2,9 @@
 ### Project Background and Purpose
 ________________________________________
 
-The housing market in Austin has been changing rapidly as the Austin Metroplex swells. Segregationalist policies still scar the city of Austin to this day, and Austin "has one of the highest rates of income segregation in the country." This project sought to see if projected housing prices and rental data would show past/current segregation patterns and evidence of gentrification.  
+The housing market in Austin has been changing rapidly as the Austin Metroplex swells. World wide events such as pandemics and financial crises can have a large impact on housing and rental prices. In addition, segregationalist policies still scar the city of Austin to this day, and Austin "has one of the highest rates of income segregation in the country." 
+
+This project sought to see if projected housing prices and rental data would show past/current segregation patterns and evidence of gentrification in addition to visible changes during the 2008 financial crisis and the COVID Pandemic.  
 
 Zehr, D. (n.d.). Inheriting inequality: Austin's segregation and gentrification. Statesman. Retrieved February 2023, from https://projects.statesman.com/news/economic-mobility/ 
 
@@ -21,6 +23,11 @@ More information about zillow:
 
 ### Project Findings
 ________________________________________
+
+There is a clear albeit minor delcine of zestimates starting in early 2008 and lasting through 2010 coinciding with the 2008 financial crisis.
+
+Black and Hispanic populations have historically resided in regions East of interstate 35. These regions have seen zestimate prices increase since 2014 at a more rapid rate to hisotrically similarly prices zipcodes and overtake some historically white regions of Austin such as Oak Hill 78749. Patterns in rental data are less clear.
+
 
 ### Tools & Packages
 ________________________________________
