@@ -13,14 +13,13 @@ center: [-97.733330, 30.266666],
 zoom: 11 
 });
 
-
 // Hover Feature
 let hoveredStateId = null;
  
 map.on('load', () => {
 map.addSource('states', {
 'type': 'geojson',
-'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
+'data': '..//geojson_data/geo_jsonmap/rent_geoclean.json'
 });
  
 // The feature-state dependent fill-opacity expression will render the hover effect
@@ -82,4 +81,5 @@ map.setFeatureState(
 hoveredStateId = null;
 });
 });
+
 
