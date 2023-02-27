@@ -33,7 +33,8 @@ ________________________________________
 - Used to make interactive visualizations with Plotly. 
 - D3 was used to grab html information for events. 
 #### HTML
-- mapbox GL JS (Mapbox Boundries)
+- Used to format webpages and integrate Javascript. 
+- Mapbox GL JS (Mapbox Boundries)
 
 ### Key Visuals 
 ________________________________________
