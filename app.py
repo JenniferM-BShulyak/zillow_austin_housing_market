@@ -27,7 +27,7 @@ app = Flask(__name__)
 # Create app routes
 @app.route('/')
 def page_name():
-    return jsonify() # add routes
+    return render_template('index.html')
 
 
 
