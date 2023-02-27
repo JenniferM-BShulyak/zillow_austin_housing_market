@@ -4,7 +4,7 @@ ________________________________________
 
 The housing market in Austin has been changing rapidly as the Austin Metroplex swells. World wide events such as pandemics and financial crises can have a large impact on housing and rental prices. In addition, segregationalist policies still scar the city of Austin to this day, and Austin "has one of the highest rates of income segregation in the country." 
 
-This project sought to see if projected housing prices and rental data would show past/current segregation patterns and evidence of gentrification in addition to visible changes during the 2008 financial crisis and the COVID Pandemic.  
+This project sought to see if projected housing prices and rental data would show past/current segregation patterns and evidence of gentrification in addition to visible changes during the 2008 financial crisis and the COVID Pandemic. In addition, future residents of the Austin Metroplex can search for the zipcodes where they can find the most affordable homes and rental options or the zipcodes for the best property investiments.   
 
 Zehr, D. (n.d.). Inheriting inequality: Austin's segregation and gentrification. Statesman. Retrieved February 2023, from https://projects.statesman.com/news/economic-mobility/ 
 
@@ -25,12 +25,13 @@ More information about zillow:
 ________________________________________
 
 #### PostGre SQL
-- 
+- Used to store data. 
 #### Python 
-- pandas
-- Flask
+- Data was cleaned and transformed in **initial_setup.ipynb** for database storage in Python and the package pandas was also utilized. The percent changes in zestimates and rental prices were calculated in the **percentage_change_setup.ipynb**.
+- Flask used to set up API endpoints and a local server. 
 #### JavaScript
-- d3
+- Used to make interactive visualizations with Plotly. 
+- D3 was used to grab html information for events. 
 #### HTML
 - mapbox GL JS (Mapbox Boundries)
 
@@ -49,10 +50,15 @@ ________________________________________
  
 ![Screen Shot 2023-02-27 at 1 44 07 PM](https://user-images.githubusercontent.com/111457464/221666799-96950e4c-1333-4565-a29c-c1e041cfc825.png)
 
+#### Map View
+ * View the distribution of housing prices across the Austin area.
+
 ### Project Findings
 ________________________________________
 
-There is a clear albeit minor delcine of zestimates starting in early 2008 and lasting through 2010 coinciding with the 2008 financial crisis.
-
-Black and Hispanic populations have historically resided in regions East of interstate 35. These regions have seen zestimate prices increase since 2014 at a more rapid rate to hisotrically similarly prices zipcodes and overtake some historically white regions of Austin such as Oak Hill 78749. Patterns in rental data are less clear.
+ * Zestimates tend to follow a pattern where prices increase more rapidly in the summer months and increase more slowly (or they decrease) in the Winter months. This pattern lines up with the Texas school year as families are more likely to move during the Summer months which causes an increase in supply in the Summer. This pattern is not evident in rental prices; this could be due to a higher percentage of families inhabiting houses. 
+ * There is a clear albeit minor delcine of zestimates starting in early 2008 and lasting through 2010 coinciding with the 2008 financial crisis. The housing market in Austin was not impacted to the same degree as a lot of the US. 
+ * Between 2012 and 2016, there was a steady increase in the zestimates of homes hovering between 0.75-2.00% monthly increases. After 2016, the zestimates continued to rise, but to a lesser degree.
+ * Black and Hispanic populations have historically resided in regions East of interstate 35. These regions have seen zestimate prices increase since 2014 at a more rapid rate (closer to 2.00% compared to 0.75%) to hisotrically similarly prices zipcodes and overtake some historically white regions of Austin such as Oak Hill 78749. Patterns in rental data are less clear. Otherwise, prices in all zipcodes have increases and followed similar patterns. 
+ * After the start of the COVID pandemic, the change in zestimates became much more volatile while still following seasonal patterns. At times, the percent increase in zestimates rose to 4.5% each month. Rental prices initially declined, but have sinve risen rapidly. 
 
