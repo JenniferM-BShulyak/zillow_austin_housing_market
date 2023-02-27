@@ -21,14 +21,6 @@ More information about zillow:
   * Zillow Observed Rent Index (ZORI): A smoothed measure of the typical observed market rate rent across a given region. ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure representativeness across the entire market, not just those homes currently listed for-rent. The index is dollar-denominated by computing the mean of listed rents that fall into the 40th to 60th percentile range for all homes and apartments in a given region, which is once again weighted to reflect the rental housing stock.
   * ZHVI and ZORI definitions were taken from https://www.zillow.com/research/data/ 
 
-### Project Findings
-________________________________________
-
-There is a clear albeit minor delcine of zestimates starting in early 2008 and lasting through 2010 coinciding with the 2008 financial crisis.
-
-Black and Hispanic populations have historically resided in regions East of interstate 35. These regions have seen zestimate prices increase since 2014 at a more rapid rate to hisotrically similarly prices zipcodes and overtake some historically white regions of Austin such as Oak Hill 78749. Patterns in rental data are less clear.
-
-
 ### Tools & Packages
 ________________________________________
 
@@ -44,6 +36,23 @@ ________________________________________
 
 ### Key Visuals 
 ________________________________________
+#### Lineplots looking at Zestimates and Rental Over Time
+ * Visualization made using Plotly
+ * Toggle between (1) Zestimates Over Time, (2) Percent Change in Zestimates Over Time, (3) Rental Prices Over Time, and (4) Percent Change in Rental Prices Over Time
 
-### Sources
+![Screen Shot 2023-02-27 at 1 39 24 PM](https://user-images.githubusercontent.com/111457464/221666001-68a19df0-765d-44d4-9a0c-ce8219689954.png)
+![Screen Shot 2023-02-27 at 1 38 58 PM](https://user-images.githubusercontent.com/111457464/221666027-a91a248c-6c63-4c17-8e8a-9ee0e4107114.png)
+
+#### Summary Table
+ * Compare key housing market metrics across different neighborhoods.
+ * Search by Zipcode.
+ 
+![Screen Shot 2023-02-27 at 1 44 07 PM](https://user-images.githubusercontent.com/111457464/221666799-96950e4c-1333-4565-a29c-c1e041cfc825.png)
+
+### Project Findings
 ________________________________________
+
+There is a clear albeit minor delcine of zestimates starting in early 2008 and lasting through 2010 coinciding with the 2008 financial crisis.
+
+Black and Hispanic populations have historically resided in regions East of interstate 35. These regions have seen zestimate prices increase since 2014 at a more rapid rate to hisotrically similarly prices zipcodes and overtake some historically white regions of Austin such as Oak Hill 78749. Patterns in rental data are less clear.
+
