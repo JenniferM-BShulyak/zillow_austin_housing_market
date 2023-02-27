@@ -6,80 +6,41 @@ const map = new mapboxgl.Map({
 // container ID
 container: 'map',
  // style URL
-style: 'mapbox://styles/gbnlomar/cleimod8n008m01pera3rhtq6',
+style: 'mapbox://styles/gbnlomar/clem19jqn003f01mmydku5v7k',
 // starting position [lng, lat]
 center: [-97.733330, 30.266666],
 // starting zoom
-zoom: 11 
+zoom: 10 
 });
 
-// Hover Feature
-let hoveredStateId = null;
- 
-map.on('load', () => {
-map.addSource('states', {
-'type': 'geojson',
-'data': '..//geojson_data/geo_jsonmap/rent_geoclean.json'
-});
- 
-// The feature-state dependent fill-opacity expression will render the hover effect
-// when a feature's hover state is set to true.
-map.addLayer({
-'id': 'state-fills',
-'type': 'fill',
-'source': 'states',
-'layout': {},
-'paint': {
-'fill-color': '#627BC1',
-'fill-opacity': [
-'case',
-['boolean', ['feature-state', 'hover'], false],
-1,
-0.5
-]
-}
-});
- 
-map.addLayer({
-'id': 'state-borders',
-'type': 'line',
-'source': 'states',
-'layout': {},
-'paint': {
-'line-color': '#627BC1',
-'line-width': 2
-}
-});
- 
-// When the user moves their mouse over the state-fill layer, we'll update the
-// feature state for the feature under the mouse.
-map.on('mousemove', 'state-fills', (e) => {
-if (e.features.length > 0) {
-if (hoveredStateId !== null) {
-map.setFeatureState(
-{ source: 'states', id: hoveredStateId },
-{ hover: false }
-);
-}
-hoveredStateId = e.features[0].id;
-map.setFeatureState(
-{ source: 'states', id: hoveredStateId },
-{ hover: true }
-);
-}
-});
- 
-// When the mouse leaves the state-fill layer, update the feature state of the
-// previously hovered feature.
-map.on('mouseleave', 'state-fills', () => {
-if (hoveredStateId !== null) {
-map.setFeatureState(
-{ source: 'states', id: hoveredStateId },
-{ hover: false }
-);
-}
-hoveredStateId = null;
-});
-});
+map.on('load', function(){
+    map.addLayer({
+        id: 'rent',
+        type: "fill",
+        source: {
+            type: 'geojson',
+            data: '..//geojson_data/geo_jsonmap/rent_geoclean.geojson'
+        },
+        'paint': {
+            'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', '2022'],
+                1000,
+                '#008000',
+                2500,
+                '#7F3121'
+            ],
+            'fill-opacity': 0.75
+        }
+    });
 
+    // Set filter to first month of the year
+    // 0 = January
+    filterBy(0);
 
+    document.getElementById('slider').addEventListener('input', (e) => {
+        const month = parseInt(e.target.value, 8);
+        filterBy(month);
+    });
+})
