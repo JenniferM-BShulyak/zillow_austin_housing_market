@@ -53,7 +53,8 @@ ________________________________________
 
 #### Map View
  * View the distribution of housing prices across the Austin area.
-
+ ![image](https://user-images.githubusercontent.com/111457464/221725589-5008261e-4caf-4d6e-a758-3c8d33914edc.png)
+ 
 ### Project Findings
 ________________________________________
 
