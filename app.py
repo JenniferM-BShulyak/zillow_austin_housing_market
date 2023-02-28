@@ -7,7 +7,7 @@ from flask import Flask, jsonify, render_template
 import pandas as pd
 
 # Create connection
-engine = create_engine('postgresql://postgres:2066325373@localhost:5432/zillow')
+engine = create_engine('postgresql://postgres:Jb631834@localhost:5432/Austin_Housing')
 
 # Reflect tables
 Base = automap_base()
@@ -107,13 +107,9 @@ def visualization_1():
 def visualization_2():
     return render_template('SummaryComparison.html')
 
-# @app.route('/visualization_2')
-# def visualization_2():
-#     #return render_template('')
-
-# @app.route('/visualization_3')
-# def visualization_3():
-#     #return render_template('')
+@app.route('/map')
+def visualization_3():
+    return render_template('map.html')
 
 
 if __name__ == "__main__":
