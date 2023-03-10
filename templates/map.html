@@ -4,66 +4,22 @@
 <meta charset="utf-8">
 <title>Display a map on a webpage</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
-
-<style> body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-  
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  #console {
-    position: absolute;
-    margin: 10px;
-    width: 240px;
-    background-color: white;
-    padding: 0px 10px
-  }
-  .session {
-    margin-bottom: 20px;
-  }
-  
-  .row {
-    height: 12px;
-    width: 100%;
-  }
-  
-  .colors {
-    background: linear-gradient(to right, #08f104, #efc301, #ef0101);
-    margin-bottom: 5px;
-  }
-  
-  .label {
-    width: 15%;
-    display: inline-block;
-    text-align: center;
-  }</style>
-
-</head>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+crossorigin=""></script>
+<style>
+  #map { height: 720px; }
+</style>
 <body>
 
 <div id="map"></div>
-    <div id='console'>
-        <h1>Rent in Austin</h1>
-    </div>
-        <div class='session'>
-        <h2>Rent Range</h2>
-        <div class='row colors'>
-            </div>
-            <div class='row labels'>
-            <div class='label'>1000</div>
-            <div class='label'>1500</div>
-            <div class='label'>+2500</div>
-    </div>
-    </div>
+
+</div>
+
 <script src="../static/map.js"> </script>
+
 </body>
 </html>
