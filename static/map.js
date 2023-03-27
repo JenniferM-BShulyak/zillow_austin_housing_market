@@ -13,6 +13,16 @@ center: [-97.733330, 30.266666],
 zoom: 10 
 });
 
+
+var LayerIds = ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+var slider = document.getElementById('slider')
+slider.addEventListener('input', function(e) {
+    var index = parseInt(e.target.value);
+    for (var i = 0; i <LayerIds.length; i++){
+        map.setLayoutProperty(LayerIds[i], 'visibility', i === index ? 'visible' : 'none');
+    }
+}); 
+
 // Loading Map
 map.on('load', function(){
     
@@ -24,7 +34,7 @@ map.on('load', function(){
     });
     
     map.addLayer({
-        id: 'rent_2015',
+        id: '2015',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -43,7 +53,7 @@ map.on('load', function(){
     });
 
     map.addLayer({
-        id: 'rent_2016',
+        id: '2016',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -56,13 +66,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2017',
+        id: '2017',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -75,13 +84,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2018',
+        id: '2018',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -94,12 +102,11 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
     map.addLayer({
-        id: 'rent_2019',
+        id: '2019',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -112,13 +119,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2020',
+        id: '2020',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -131,13 +137,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2021',
+        id: '2021',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -150,13 +155,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2022',
+        id: '2022',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -169,13 +173,12 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75,
-            'visibility': 'none'
+            'fill-opacity': 0.75
         }
     });
 
     map.addLayer({
-        id: 'rent_2023',
+        id: '2023',
         type: "fill",
         source: 'rent-data',
         paint: {
@@ -201,58 +204,14 @@ map.on('load', function(){
             'line-width': .25
         }
     });
-
-    map.on('idle', () => {
-        // If these two layers were not added to the map, abort
-        if (!map.getLayer('rent_2015')
-        ) {
-        return;
-        }
-         
-        // Enumerate ids of the layers.
-        const toggleableLayerIds = ['rent_2015', 'rent_2016', 'rent_2017','rent_2018', 'rent_2019', 'rent_2020', 'rent_2021', 'rent_2022', 'rent_2023'];
-         
-        // Set up the corresponding toggle button for each layer.
-        for (const id of toggleableLayerIds) {
-        // Skip layers that already have a button set up.
-        if (document.getElementById(id)) {
-        continue;
-        }
-         
-        // Create a link.
-        const link = document.createElement('a');
-        link.id = id;
-        link.href = '#';
-        link.textContent = id;
-        link.className = 'active';
-         
-        // Show or hide layer when the toggle is clicked.
-        link.onclick = function (e) {
-        const clickedLayer = this.textContent;
-        e.preventDefault();
-        e.stopPropagation();
-         
-        const visibility = map.getLayoutProperty(
-        clickedLayer,
-        'visibility'
-        );
-         
-        // Toggle layer visibility by changing the layout object's visibility property.
-        if (visibility === 'visible') {
-        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-        this.className = '';
-        } else {
-        this.className = 'active';
-        map.setLayoutProperty(
-        clickedLayer,
-        'visibility',
-        'visible'
-        );
-        }
-        };
-         
-        const layers = document.getElementById('menu');
-        layers.appendChild(link);
-        }
-        });
+    
+    // Set filter to first recorded year
+    // 0 = J2015
+    filterBy(0);
+    document.getElementById('slider').addEventListener('input', (e) => {
+    const month = parseInt(e.target.value, 10);
+    filterBy(year);
+    });
 });
+
+
