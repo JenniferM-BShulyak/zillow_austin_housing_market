@@ -1,6 +1,7 @@
 // Access Token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JubG9tYXIiLCJhIjoiY2xlaHN1cGIwMGp3eDNzbnR6OWpscXl2MiJ9.mnkH-jHkJkD7XU6HoY1v_g';
 
+
 // Adding Map
 const map = new mapboxgl.Map({
 // container ID
@@ -10,12 +11,22 @@ style: 'mapbox://styles/gbnlomar/clem19jqn003f01mmydku5v7k',
 // starting position [lng, lat]
 center: [-97.733330, 30.266666],
 // starting zoom
-zoom: 10 
+zoom: 9
 });
 
 
-var LayerIds = ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
-var slider = document.getElementById('slider')
+var LayerIds = ['2015', 
+'2016', 
+'2017', 
+'2018', 
+'2019', 
+'2020', 
+'2021', 
+'2022', 
+'2023'];
+
+const slider = document.getElementById('slider');
+slider.value = 0;
 slider.addEventListener('input', function(e) {
     var index = parseInt(e.target.value);
     for (var i = 0; i <LayerIds.length; i++){
@@ -203,15 +214,7 @@ map.on('load', function(){
             'line-color': '#FFFFFF',
             'line-width': .25
         }
-    });
-    
-    // Set filter to first recorded year
-    // 0 = J2015
-    filterBy(0);
-    document.getElementById('slider').addEventListener('input', (e) => {
-    const month = parseInt(e.target.value, 10);
-    filterBy(year);
-    });
+    })
 });
 
 
