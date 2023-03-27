@@ -15,8 +15,19 @@
 <body>
     <link rel="stylesheet" href="../static/css/style.css">
     </style>
-    <nav id="menu"></nav>
     <div id="map"></div>
+    <div class="map-overlaytop">
+        <h2> Zillow Rent Data </h2>
+        <label id="year"></label>
+        <div id="slider-container">
+            <input id="slider" type="range" min="0" max="8" step="1" value="0">
+        </div>
+        <div class="map-overlay-inner">
+            <div id="legend" class="legend">
+            <div class="bar"></div>
+            <div>Price (USD)</div>
+            </div>
+    </div>
 
     <script src="../static/map.js"> </script>
 </body>
