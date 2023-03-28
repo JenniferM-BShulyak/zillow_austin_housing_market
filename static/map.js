@@ -13,15 +13,22 @@ center: [-97.733330, 30.266666],
 zoom: 10 
 });
 
-
+// Layer Years 
 var LayerIds = ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+
 var slider = document.getElementById('slider')
+var layerName = document.getElementById('layer-name');
+
 slider.addEventListener('input', function(e) {
     var index = parseInt(e.target.value);
     for (var i = 0; i <LayerIds.length; i++){
         map.setLayoutProperty(LayerIds[i], 'visibility', i === index ? 'visible' : 'none');
     }
+    layerName.textContent = LayerIds[index];
 }); 
+
+// Setting default layer to '2015'
+slider.value = 0;
 
 // Loading Map
 map.on('load', function(){
@@ -30,7 +37,7 @@ map.on('load', function(){
 
     map.addSource ('rent-data', {
         type: 'geojson',
-        data: '..//geojson_data/geo_jsonmap/rent_geoclean.geojson'
+        data: '..//geojson_data/geo_jsonmap/rent_data/rent_geoclean.geojson'
     });
     
     map.addLayer({
@@ -47,7 +54,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         
         }
     });
@@ -66,7 +73,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -84,7 +91,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -102,7 +109,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
     map.addLayer({
@@ -119,7 +126,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -137,7 +144,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -155,7 +162,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -173,7 +180,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -191,7 +198,7 @@ map.on('load', function(){
                 2500,
                 '#7F3121'
             ],
-            'fill-opacity': 0.75
+            'fill-opacity': .50
         }
     });
 
@@ -204,14 +211,24 @@ map.on('load', function(){
             'line-width': .25
         }
     });
-    
-    // Set filter to first recorded year
-    // 0 = J2015
-    filterBy(0);
-    document.getElementById('slider').addEventListener('input', (e) => {
-    const month = parseInt(e.target.value, 10);
-    filterBy(year);
-    });
-});
+
+    map.addLayer({
+        'id': 'text-layer',
+        'type': 'symbol',
+        'source': 'rent-data',
+        'layout': {
+          'text-field': ['get', 'ZCTA5CE10'],
+          'text-font': ['Open Sans Regular', 'Arial Unicode MS Bold'],
+          'text-size': 12,
+          'text-offset': [0, 0.6],
+          'text-anchor': 'top'
+        },
+        'paint': {
+          'text-color': 'white',
+          'text-halo-color': 'black',
+          'text-halo-width': 1
+        }
+      });
+})
 
 
