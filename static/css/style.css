@@ -13,7 +13,10 @@ body {
 
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+<<<<<<< HEAD
     color: #fff;
+=======
+>>>>>>> 7a58b6ab96bd171ceefbd65c0aa39dd5b729acd7
     position: absolute;
     width: 25%;
     top: 0;
@@ -38,7 +41,11 @@ body {
     .map-overlay .legend .bar {
     height: 10px;
     width: 100%;
+<<<<<<< HEAD
     background: linear-gradient(to right, #008000, #7f3121);
+=======
+    background: linear-gradient(to right, #008000, #7F3121);
+>>>>>>> 7a58b6ab96bd171ceefbd65c0aa39dd5b729acd7
     }
      
     .map-overlay input {
@@ -49,7 +56,21 @@ body {
     margin: 0;
     cursor: ew-resize;
     }
+<<<<<<< HEAD
     .mapboxgl-popup {
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
+=======
+#slider-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+#slider {
+    width: 100%;
+}
+>>>>>>> 7a58b6ab96bd171ceefbd65c0aa39dd5b729acd7

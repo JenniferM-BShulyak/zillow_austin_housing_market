@@ -1,6 +1,7 @@
 // Access Token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2JubG9tYXIiLCJhIjoiY2xlaHN1cGIwMGp3eDNzbnR6OWpscXl2MiJ9.mnkH-jHkJkD7XU6HoY1v_g';
 
+
 // Adding Map
 const map = new mapboxgl.Map({
 // container ID
@@ -10,7 +11,7 @@ style: 'mapbox://styles/gbnlomar/clem19jqn003f01mmydku5v7k',
 // starting position [lng, lat]
 center: [-97.733330, 30.266666],
 // starting zoom
-zoom: 10 
+zoom: 9
 });
 
 // Layer Years 
