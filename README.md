@@ -52,9 +52,12 @@ ________________________________________
 ![Screen Shot 2023-02-27 at 1 44 07 PM](https://user-images.githubusercontent.com/111457464/221666799-96950e4c-1333-4565-a29c-c1e041cfc825.png)
 
 #### Map View
- * View the distribution of housing prices across the Austin area.
- ![image](https://user-images.githubusercontent.com/111457464/221725589-5008261e-4caf-4d6e-a758-3c8d33914edc.png)
- 
+ * View the average distribution of rent prices across the Austin area.
+  ##### 2020
+ ![image](https://github.com/JenniferM-BShulyak/zillow_austin_housing_market/blob/main/screenshots/rent_data_2020.png)
+
+  ##### 2023
+![image](https://github.com/JenniferM-BShulyak/zillow_austin_housing_market/blob/main/screenshots/rent_data_2023.png)
 ### Project Findings
 ________________________________________
 
