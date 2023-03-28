@@ -11,7 +11,7 @@ style: 'mapbox://styles/gbnlomar/clem19jqn003f01mmydku5v7k',
 // starting position [lng, lat]
 center: [-97.733330, 30.266666],
 // starting zoom
-zoom: 9
+zoom: 10
 });
 
 // Layer Years 
