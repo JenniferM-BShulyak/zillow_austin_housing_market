@@ -12,7 +12,7 @@
     </li>
     <li><a href="#tools-and-packages">Tools & Packages</a></li>
     <li><a href="#key-visuals">Key Visuals</a></li>
-    <lis><a href="project-findings">Project Findings</></li>
+    <li><a href="project-findings">Project Findings</></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#references">References</a></li>
   </ol>
