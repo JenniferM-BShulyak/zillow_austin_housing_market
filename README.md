@@ -51,9 +51,9 @@ More information about zillow:
 #### JavaScript
 - Used to make interactive visualizations with Plotly. 
 - D3 was used to grab html information for events. 
+- Used Mapbox GL JS to visualize data (Mapbox Boundries)
 #### HTML
 - Used to format webpages and integrate Javascript. 
-- Mapbox GL JS (Mapbox Boundries)
 
 <!-- KEY VISUALS -->
 ## Key Visuals 
