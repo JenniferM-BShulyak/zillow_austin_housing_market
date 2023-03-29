@@ -92,11 +92,11 @@ More information about zillow:
 ## Contact
 
 #### Github
-[Jennifer Shulyak](https://github.com/JenniferM-BShulyak)
-[Omar Solis](https://github.com/oas95)
-[Jackson Blanton](https://github.com/JacksonBlanton)
-[Bobby McGraw](https://github.com/BMcGraw1215)
-[Joe Moreno](https://github.com/jrm33)
+- [Jennifer Shulyak](https://github.com/JenniferM-BShulyak)
+- [Omar Solis](https://github.com/oas95)
+- [Jackson Blanton](https://github.com/JacksonBlanton)
+- [Bobby McGraw](https://github.com/BMcGraw1215)
+- [Joe Moreno](https://github.com/jrm33)
 
 <!-- SOURCES -->
 ## Sources
